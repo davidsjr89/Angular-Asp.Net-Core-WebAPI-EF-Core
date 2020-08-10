@@ -1,7 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Aluno } from '../models/aluno';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { Aluno } from '../models/Aluno';
 
 @Component({
   selector: 'app-alunos',
