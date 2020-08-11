@@ -96,7 +96,7 @@ namespace SmartSchool_WEBAPI.Controllers
                 _repo.Delete(aluno);
                 
                 if(await _repo.SaveChangesAsync())
-                    return Ok("Deletado");
+                    return Ok(new {message = "Deletado"});
             }
             catch(Exception e)
             {

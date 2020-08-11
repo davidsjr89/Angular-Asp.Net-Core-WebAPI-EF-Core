@@ -1,15 +1,12 @@
 <div class="row">
   <div class="col-sm-6" *ngIf="alunoSelecionado">
-    <div class="row">
-      <div class="mr-auto">
-        <app-titulo titulo="Código: {{ alunoSelecionado.id }}"></app-titulo>
-      </div>
-      <div class="mt-1">
-        <div class="btn btn-sm btn-outline-danger" (click)="voltar()">
-          Fechar
-        </div>
-      </div>
-    </div>
+        <app-titulo [titulo]="(alunoSelecionado.id === 0 ? 'Novo Aluno' : 'Cód. Aluno: ' + alunoSelecionado.id)">
+          <div class="btn btn-sm btn-outline-danger" (click)="voltar()">
+            Fechar
+          </div>
+        </app-titulo>
+
+
     <form [formGroup]="alunoForm" (submit)="alunoSubmit()">
       <div class="form-group">
         <label for="nome">Nome</label>
@@ -43,7 +40,7 @@
           class="btn btn-sm btn-outline-success"
           [disabled]="!alunoForm.valid"
         >
-          Enviar
+          Salvar
         </button>
       </div>
     </form>
@@ -52,7 +49,11 @@
   <div
     [ngClass]="{ 'col-sm-12': !alunoSelecionado, 'col-sm-6': alunoSelecionado }"
   >
-    <app-titulo titulo="Alunos"></app-titulo>
+    <app-titulo titulo="Alunos">
+      <button class="btn btn-outline-success" (click)="alunoNovo()">
+        Cadastrar Aluno
+      </button>
+    </app-titulo>
     <table class="table table-hover">
       <thead class="thead-light">
         <tr>
@@ -83,7 +84,7 @@
               >
                 Professores
               </button>
-              <button class="btn btn-sm btn-outline-danger">Desativar</button>
+              <button class="btn btn-sm btn-outline-danger" (click)="deletarAluno(aluno.id)">Deletar</button>
             </div>
           </td>
         </tr>

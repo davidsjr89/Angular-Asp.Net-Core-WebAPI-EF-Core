@@ -1,13 +1,10 @@
 <div class="row">
   <div *ngIf="professorSelecionado" class="col-sm-6">
-    <div class="row">
-      <div class="mr-auto">
-        <app-titulo titulo="Código: {{ professorSelecionado.id }}"></app-titulo>
-      </div>
-      <div class="mt-1">
-        <div class="btn btn-sm btn-outline-danger" (click)="voltar()">Fechar</div>
-      </div>
-    </div>
+    <app-titulo [titulo]="(professorSelecionado.id === 0 ? 'Novo Aluno' : 'Cód. Aluno: ' + professorSelecionado.id)">
+          <div class="btn btn-sm btn-outline-danger" (click)="voltar()">Fechar</div>
+        </app-titulo>
+      
+
     <form [formGroup]="professorForm" (submit)="professorSubmit()">
       <div class="form-group">
         <label for="nome">Nome</label>
@@ -18,7 +15,7 @@
           class="form-control"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="disciplina">Disciplina</label>
         <input
           id="disciplina"
@@ -26,7 +23,7 @@
           type="text"
           class="form-control"
         />
-      </div>
+      </div> -->
       <div class="form-group">
         <button
           class="btn btn-sm btn-outline-success"
@@ -44,7 +41,9 @@
       'col-sm-12': !professorSelecionado
     }"
   >
-    <app-titulo [titulo]="titulo"></app-titulo>
+    <app-titulo [titulo]="titulo">
+      <div class="btn btn-sm btn-outline-success" (click)="professorNovo()">Cadastrar Professor</div>
+    </app-titulo>
     <br />
     <table class="table table-hover">
       <thead class="thead-light">
@@ -73,9 +72,6 @@
                 (click)="openModal(template)"
               >
                 Alunos
-              </button>
-              <button class="btn btn-sm btn-outline-danger">
-                Desativar
               </button>
             </div>
           </td>

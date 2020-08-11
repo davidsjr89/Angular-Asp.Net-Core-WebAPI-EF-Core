@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -32,7 +33,8 @@ import { TituloComponent } from './titulo/titulo.component';
       BsDropdownModule.forRoot(),
       FormsModule,
       ReactiveFormsModule,
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [

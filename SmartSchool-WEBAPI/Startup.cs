@@ -37,6 +37,7 @@ namespace SmartSchool_WEBAPI
             }
 
             // app.UseHttpsRedirection();
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseRouting();
 
